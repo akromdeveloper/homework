@@ -1,15 +1,66 @@
-# foydalanuvchi_malumotlari.py
+import json
 
-fayl_nomi = "malumotlar.txt"
+data = {"Model": "Malibu", "Rang": "Qora", "Yil": 2020, "Narh": 40000}
+data_json = json.dumps(data)
+print("JSON string:", data_json)
 
-while True:
-    malumot = input("Istalgan ma'lumotni kiriting (to'xtash uchun 'stop' deb yozing): ")
+talaba_json = '{"ism":"Hasan","familiya":"Husanov","tyil":2000}'
+talaba = json.loads(talaba_json)
+print("Talaba:", talaba["ism"], talaba["familiya"])
 
-    if malumot.lower() == "stop":
-        print("Dastur to'xtatildi.")
-        break
+with open("car.json", "w") as f:
+    json.dump(data, f)
 
-    with open(fayl_nomi, "a", encoding="utf-8") as f:
-        f.write(malumot + "\n")
+with open("talaba.json", "w") as f:
+    json.dump(talaba, f)
 
-    print("Ma'lumot faylga qo'shildi!")
+students = [
+    {"ism": "Ali", "familiya": "Valiyev", "kurs": 2, "fakultet": "Matematika"},
+    {"ism": "Laylo", "familiya": "Karimova", "kurs": 1, "fakultet": "Fizika"},
+    {"ism": "Oybek", "familiya": "Ergashev", "kurs": 3, "fakultet": "Informatika"}
+]
+
+with open("students.json", "w") as f:
+    json.dump(students, f)
+
+
+with open("students.json") as f:
+    loaded_students = json.load(f)
+
+for s in loaded_students:
+    print(f"{s['ism']} {s['familiya']}, {s['kurs']}-kurs, {s['fakultet']} talabasi")
+    import json
+
+
+data = {"Model": "Malibu", "Rang": "Qora", "Yil": 2020, "Narh": 40000}
+data_json = json.dumps(data)
+print("JSON string:", data_json)
+
+
+talaba_json = '{"ism":"Hasan","familiya":"Husanov","tyil":2000}'
+talaba = json.loads(talaba_json)
+print("Talaba:", talaba["ism"], talaba["familiya"])
+
+
+with open("car.json", "w") as f:
+    json.dump(data, f)
+
+with open("talaba.json", "w") as f:
+    json.dump(talaba, f)
+
+
+students = [
+    {"ism": "Ali", "familiya": "Valiyev", "kurs": 2, "fakultet": "Matematika"},
+    {"ism": "Laylo", "familiya": "Karimova", "kurs": 1, "fakultet": "Fizika"},
+    {"ism": "Oybek", "familiya": "Ergashev", "kurs": 3, "fakultet": "Informatika"}
+]
+
+with open("students.json", "w") as f:
+    json.dump(students, f)
+
+
+with open("students.json") as f:
+    loaded_students = json.load(f)
+
+for s in loaded_students:
+    print(f"{s['ism']} {s['familiya']}, {s['kurs']}-kurs, {s['fakultet']} talabasi")
